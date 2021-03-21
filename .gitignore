@@ -39,7 +39,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
+yarn.lock
+package-lock.json
 # TypeScript v1 declaration files
 typings/
 
@@ -78,3 +79,12 @@ typings/
 
 # FuseBox cache
 .fusebox/
+slappey.json
+stats.json
+
+src/events/stats.json
+src/events/database.json
+commandStats.json
+src/events/message/count.json
+commandStats.json
+slappey.json
