@@ -38,7 +38,10 @@ module.exports = class PingCommand extends BaseCommand {
       color: randomColor,
       title: '〽️ Pinging...',
     };
-    const m = await message.reply({ embed: pingEmbed });
+    const m = await message.reply({
+      embed: pingEmbed,
+      allowedMentions: { repliedUser: false },
+    });
     return m.edit({
       embed: {
         color: randomColor,
@@ -54,10 +57,11 @@ module.exports = class PingCommand extends BaseCommand {
           },
           {
             name: 'Uptime:',
-            value: `\`${message.client.uptime / 1000} seconds\`.`,
+            value: `\`${message.client.uptime / 1000} seconds\``,
           },
         ],
       },
+      allowedMentions: { repliedUser: false },
     });
   }
 };

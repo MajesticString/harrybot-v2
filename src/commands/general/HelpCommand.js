@@ -43,13 +43,15 @@ module.exports = class HelpCommand extends BaseCommand {
       .setTitle('Command Help')
       .setColor(randomColor)
       .setAuthor(
-        'harry potter#0014',
+        'Made by harry potter#0014 using discord.js',
         'https://cdn.discordapp.com/avatars/696554549418262548/2bb8a109ba41c84b0aad8d9f0bafb948.png'
       );
     if (!args[0] || catagories.includes(args[0]) == false) {
-      helpEmbed.setDescription(
-        'Use `--help (catagory)` to get commands within a catagory'
-      );
+      helpEmbed
+        .setDescription(
+          'Use `--help (catagory)` to get commands within a catagory'
+        )
+        .addField('Catagories:', `\`${catagories.join('`, `')}\``);
 
       message.reply(helpEmbed);
     } else {
@@ -63,7 +65,32 @@ module.exports = class HelpCommand extends BaseCommand {
           })`
         );
       if (args[0] === 'general') {
-        helpEmbed.addField('`--help` OR ');
+        helpEmbed.addField(
+          '`--help (catagory)` OR `--h (catagory)`',
+          'Brings up this prompt.'
+        );
+      } else if (args[0] === 'music') {
+        helpEmbed
+          .addField(
+            '`--play (name of song)` OR `--p (name of song)`',
+            'Plays a song off of youtube. You must be in a VC.',
+            true
+          )
+          .addField(
+            '`--stop` OR `--pause`',
+            'Stops playing songs, clears the queue, and leaves the VC.',
+            true
+          )
+          .addField(
+            '`--skip`',
+            'Stops playing the current song and plays the next song in the queue.',
+            true
+          );
+      } else if (args[0] === 'moderation') {
+      } else if (args[0] === 'leveling') {
+      } else if (args[0] === 'currency') {
+      } else {
+        message.reply('Ummm.... something happened. Try the command agian.');
       }
       message.reply(helpEmbed);
     }
