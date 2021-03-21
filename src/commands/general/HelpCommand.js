@@ -1,10 +1,10 @@
-const BaseCommand = require("../../utils/structures/BaseCommand");
-const Discord = require("discord.js");
-const Harrybot = require("../../Harrybot");
+const BaseCommand = require('../../utils/structures/BaseCommand');
+const Discord = require('discord.js');
+const Harrybot = require('../../Harrybot');
 
 module.exports = class HelpCommand extends BaseCommand {
   constructor() {
-    super("help", "general", ["commands", "commandhelp", "h", "ch"]);
+    super('help', 'general', ['commands', 'commandhelp', 'h', 'ch']);
   }
 
   run(client, message, args, Discord) {
@@ -33,39 +33,39 @@ module.exports = class HelpCommand extends BaseCommand {
     ];
     const randomColor = color[randomInt(0, color.length)];
     const catagories = [
-      "general",
-      "moderation",
-      "leveling",
-      "currency",
-      "music",
+      'general',
+      'moderation',
+      'leveling',
+      'currency',
+      'music',
     ];
     let helpEmbed = new Discord.MessageEmbed()
-      .setTitle("Command Help")
+      .setTitle('Command Help')
       .setColor(randomColor)
       .setAuthor(
-        "harry potter#0014",
-        "https://cdn.discordapp.com/avatars/696554549418262548/2bb8a109ba41c84b0aad8d9f0bafb948.png"
+        'harry potter#0014',
+        'https://cdn.discordapp.com/avatars/696554549418262548/2bb8a109ba41c84b0aad8d9f0bafb948.png'
       );
     if (!args[0] || catagories.includes(args[0]) == false) {
       helpEmbed.setDescription(
-        "Use `--help (catagory)` to get commands within a catagory"
+        'Use `--help (catagory)` to get commands within a catagory'
       );
 
-      message.channel.send(helpEmbed);
+      message.reply(helpEmbed);
     } else {
       helpEmbed = new Discord.MessageEmbed()
-        .setTitle("Command Help")
+        .setTitle('Command Help')
         .setDescription(
           `${
             args[0].charAt(0).toUpperCase() + args[0].slice(1)
           } commands help.\nStart all commands with the prefix (${
-            require("../../../slappey.json").prefix
+            require('../../../slappey.json').prefix
           })`
         );
-      if (args[0] === "general") {
-        helpEmbed.addField("`--help` OR ");
+      if (args[0] === 'general') {
+        helpEmbed.addField('`--help` OR ');
       }
-      message.channel.send(helpEmbed);
+      message.reply(helpEmbed);
     }
   }
 };

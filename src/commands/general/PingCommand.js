@@ -1,14 +1,14 @@
-const BaseCommand = require("../../utils/structures/BaseCommand");
+const BaseCommand = require('../../utils/structures/BaseCommand');
 
 module.exports = class PingCommand extends BaseCommand {
   constructor() {
-    super("ping", "general", [
-      "ping",
-      "uptime",
-      "latency",
-      "server",
-      "api",
-      "lag",
+    super('ping', 'general', [
+      'ping',
+      'uptime',
+      'latency',
+      'server',
+      'api',
+      'lag',
     ]);
   }
 
@@ -36,24 +36,24 @@ module.exports = class PingCommand extends BaseCommand {
     var randomColor = color[Math.floor(Math.random() * color.length)];
     const pingEmbed = {
       color: randomColor,
-      title: "〽️ Pinging...",
+      title: '〽️ Pinging...',
     };
-    const m = await message.channel.send({ embed: pingEmbed });
+    const m = await message.reply({ embed: pingEmbed });
     return m.edit({
       embed: {
         color: randomColor,
         title: `🏓`,
         fields: [
           {
-            name: "Server latency",
+            name: 'Server latency',
             value: `\`${m.createdTimestamp - message.createdTimestamp}ms\``,
           },
           {
-            name: "API latency:",
+            name: 'API latency:',
             value: `\`${Math.round(message.client.ws.ping)}ms\``,
           },
           {
-            name: "Uptime:",
+            name: 'Uptime:',
             value: `\`${message.client.uptime / 1000} seconds\`.`,
           },
         ],
